@@ -18,7 +18,7 @@ RUN apt-get update && \
     export DEBIAN_FRONTEND=noninteractive && \
     wget http://repo.mysql.com/mysql-apt-config_0.8.13-1_all.deb -O /tmp/mysql-apt-config.deb && \
     dpkg -i /tmp/mysql-apt-config.deb && \
-    apt-get update -y && \
+    apt-get update && \
     apt-get install -y --allow-unauthenticated mysql-community-client=8.0.* && \
     rm -f /tmp/mysql-apt-config.deb
 
