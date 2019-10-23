@@ -1,4 +1,4 @@
-FROM python:2.7.12
+FROM python:2.7.16
 
 LABEL maintainer "mats116 <mats.kazuki@gmail.com>"
 
@@ -15,10 +15,11 @@ RUN apt-get update && \
     wget https://dl.google.com/cloudsql/cloud_sql_proxy.linux.amd64 -O /usr/local/bin/cloud_sql_proxy && \
     chmod +x /usr/local/bin/cloud_sql_proxy && \
     # MySQL Client 5.7
-    wget http://dev.mysql.com/get/mysql-apt-config_0.8.9-1_all.deb -O /tmp/mysql-apt-config.deb && \
+    export DEBIAN_FRONTEND=noninteractive && \
+    wget http://repo.mysql.com/mysql-apt-config_0.8.13-1_all.deb -O /tmp/mysql-apt-config.deb && \
     dpkg -i /tmp/mysql-apt-config.deb && \
     apt-get update && \
-    apt-get install -y mysql-community-client=5.7.* && \
+    apt-get install -y --allow-unauthenticated mysql-community-client=8.0.* && \
     rm -f /tmp/mysql-apt-config.deb
 
 CMD ["/bin/bash"]
