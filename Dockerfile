@@ -1,4 +1,4 @@
-FROM python:3.6.9-stretch
+FROM python:3.6.9
 
 LABEL maintainer "mats116 <mats.kazuki@gmail.com>"
 
